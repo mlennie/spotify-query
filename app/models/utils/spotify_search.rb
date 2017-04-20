@@ -17,7 +17,7 @@ class SpotifySearch
     end
 
     results_array = []
-    results["artists"]["items"].map do |item|
+    results["artists"]["items"].each do |item|
       results_array << item.slice("id","external_urls","genres","href","name")
     end
     return results_array
