@@ -16,8 +16,11 @@ class SpotifySearch
       Rails.logger.fatal "There was a problem fetching artists: " + e.to_s
     end
 
-    return results
-
+    results_array = []
+    results["artists"]["items"].map do |item|
+      results_array << item.slice("id","external_urls","genres","href","name")
+    end
+    return results_array
   end
 
 end
